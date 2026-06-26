@@ -35,23 +35,24 @@ SOLAR_MAX_POWER = 450.0         # Watts
 # PAYLOAD CONFIGURATION
 PAYLOADS = {
     "PNT": {
-        "power": 120.0,
-        "priority": "CRITICAL"
+        "power": 120,
+        "priority": "CRITICAL",
+        "default_state": "OFF"
     },
-
     "SATCOM": {
-        "power": 180.0,
-        "priority": "HIGH"
+        "power": 180,
+        "priority": "HIGH",
+        "default_state": "OFF"
     },
-
     "EARTH_OBSERVATION": {
-        "power": 200.0,
-        "priority": "MEDIUM"
+        "power": 200,
+        "priority": "MEDIUM",
+        "default_state": "OFF"
     },
-
     "EDGE_AI": {
-        "power": 90.0,
-        "priority": "LOW"
+        "power": 90,
+        "priority": "LOW",
+        "default_state": "OFF"
     }
 }
 
@@ -61,7 +62,7 @@ INITIAL_TEMPERATURE = 20.0          # °C
 THERMAL_CAPACITANCE = 4000.0        # J/°C
 SPACE_TEMPERATURE = -270.0          # °C
 SOLAR_HEATING = 40.0                # Watts
-THERMAL_RADIATION = 1.2             # W/°C
+THERMAL_RADIATION = 4.0             # W/°C
 WARNING_TEMPERATURE = 45.0          # °C
 CRITICAL_TEMPERATURE = 55.0         # °C
 
@@ -84,3 +85,23 @@ MISSION_PNT = "PNT"
 MISSION_EARTH_OBSERVATION = "EARTH_OBSERVATION"
 MISSION_COMMUNICATION = "COMMUNICATION"
 MISSION_EMERGENCY = "EMERGENCY"
+
+
+# RF MODEL CONFIGURATION
+RF_BASE_MARGIN = 12.0
+
+RF_WARNING_MARGIN = 9.0
+
+RF_CRITICAL_MARGIN = 4.0
+
+RF_CONFLICT_MATRIX = {
+
+    ("PNT", "ACTIVE", "SATCOM", "TX_ACTIVE"): 4.5,
+
+    ("SATCOM", "TX_ACTIVE", "EARTH_OBSERVATION", "ACTIVE"): 2.0,
+
+    ("EARTH_OBSERVATION", "ACTIVE", "EDGE_AI", "PROCESSING"): 0.5,
+
+    ("PNT", "ACTIVE", "EARTH_OBSERVATION", "ACTIVE"): 0.0,
+
+}
