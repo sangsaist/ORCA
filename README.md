@@ -45,8 +45,10 @@ ORCA investigates whether these decisions can instead be performed autonomously 
 
 ---
 ---
+
 # Architecture 
 
+```
                  ORCA
 
         Spacecraft Digital Twin
@@ -70,6 +72,8 @@ ORCA investigates whether these decisions can instead be performed autonomously 
           Metrics & Logger
                   │
              Dashboard
+
+```
 
 ---
 # Current Progress
